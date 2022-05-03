@@ -1,0 +1,48 @@
+pm.test("Status code is 200", function () {
+    pm.response.to.have.status(200);
+});
+
+let item_1 = "Dima"
+
+pm.test("item_1 Test", function () {
+    pm.expect(item_1).to.deep.equal("Dima")
+});
+
+let person_1 = {
+    "age": "25",
+    "family": {
+        "children": [["Alex",24],["Kate",12]],
+        "u_salary_1_5_year": 2000
+    },
+    "name": "Dmytro",
+    "salary": 500
+}
+
+
+pm.test("item_2 Person_1", function () {
+    pm.expect(person_1.age).to.equal("25")
+});
+
+pm.test("item_3 Person_1", function () {
+    pm.expect(person_1.family.children[1][1]).to.deep.equal(12)
+});
+
+pm.test("item_4 Person_1", function () {
+    pm.expect(person_1).to.have.property("name")
+});
+
+pm.test("item_5 Person_1", function () {
+    pm.expect(person_1).to.deep.include({"salary": 500})
+});
+
+pm.test("item_6 Person_1", function () {
+    pm.expect(person_1.family.children[1]).to.deep.include(12)
+});
+
+pm.test("item_7 Person_1", function () {
+    pm.expect(person_1.family.children[1][1]).to.be.a("Number")
+});
+
+pm.test("item_8 Person_1", function () {
+    pm.expect(person_1.family.children[1]).to.be.a("Array").that.include(12)
+});
